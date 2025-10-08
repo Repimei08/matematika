@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RekursiVerse v5.2 | Relasi Rekurensi</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Dancing+Script:wght@400;700&family=Pacifico&family=Crimson+Text:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="math-background"></div>
+
+    <header>
+        <nav>
+            <a href="#hero" class="logo">RekursiVerse</a>
+            <ul>
+                <li><a href="#hero" class="active">Beranda</a></li>
+                <li><a href="#materi">Materi</a></li>
+                <li><a href="#kalkulator">Kalkulator</a></li>
+                <li><a href="#lab">Arena Kuis</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero-section">
+            <h1 data-aos="fade-up" id="main-title"></h1> 
+            <p data-aos="fade-up" data-aos-delay="200">Ikuti Jejaknya, Temukan Polanya. Media pembelajaran interaktif & visual.</p>
+        </section>
+
+        <section id="materi" class="materi-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Jelajahi Konsep Dasar</h2>
+                <div class="materi-grid">
+                    <div class="materi-card" data-aos="fade-up" data-aos-delay="200" data-modal-target="#modal-pengenalan">
+                        <i class="icon">🤔</i><h3>Pengenalan & Analogi</h3>
+                    </div>
+                    <div class="materi-card" data-aos="fade-up" data-aos-delay="400" data-modal-target="#modal-jenis">
+                        <i class="icon">📜</i><h3>Jenis-Jenis Relasi</h3>
+                    </div>
+                    <div class="materi-card" data-aos="fade-up" data-aos-delay="600" data-modal-target="#modal-metode">
+                        <i class="icon">🛠️</i><h3>Metode Penyelesaian</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="kalkulator" class="kalkulator-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Kalkulator Ajaib</h2>
+                <div class="calculator-wrapper" data-aos="fade-up" data-aos-delay="200">
+                    <div class="calculator-input">
+                        <div class="tabs">
+                            <button class="tab-btn active" data-tab="non-homogen">Non-Homogen</button>
+                            <button class="tab-btn" data-tab="homogen">Homogen</button>
+                        </div>
+
+                        <div class="tab-content active" id="non-homogen-form">
+                            <h4>Linear Orde 1: a(n) = r*a(n-1) + k</h4>
+                            <p class="equation-template">a(n) = <input type="number" id="nh-r" placeholder="r" value="2"> * a(n-1) + <input type="number" id="nh-k" placeholder="k" value="1"></p>
+                            <div class="form-group">
+                                <label>Kondisi Awal</label>
+                                <p class="equation-template">a(<input type="number" id="nh-c" value="0" placeholder="c">) = <input type="number" id="nh-d" placeholder="d" value="1"></p>
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="homogen-form">
+                             <h4>Linear Orde 2: a(n) = c₁*a(n-1) + c₂*a(n-2)</h4>
+                             <p class="equation-template">a(n) = <input type="number" id="h-c1" placeholder="c₁" value="1"> a(n-1) + <input type="number" id="h-c2" placeholder="c₂" value="1"> a(n-2)</p>
+                             <div class="form-group">
+                                <label>Kondisi Awal</label>
+                                <p class="equation-template">a(0) = <input type="number" id="h-a0" placeholder="a₀" value="0"></p>
+                                <p class="equation-template">a(1) = <input type="number" id="h-a1" placeholder="a₁" value="1"></p>
+                             </div>
+                        </div>
+
+                        <button id="solve-btn">Pecahkan! 🔮</button>
+                    </div>
+                    <div class="calculator-output">
+                        <h3>Langkah Penyelesaian</h3>
+                        <div id="solution-steps">
+                            <p class="placeholder">Pilih tipe relasi, masukkan semua nilai, dan tekan "Pecahkan!".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lab" class="lab-section">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Arena Kuis</h2>
+                <div class="quiz-container" data-aos="fade-up" data-aos-delay="200">
+                    </div>
+                <div id="quiz-result" class="quiz-result" data-aos="fade-up"></div>
+                <div id="quiz-solutions" class="quiz-solutions" data-aos="fade-up"></div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" id="modal-pengenalan">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Pengenalan & Analogi</h2>
+            <div class="modal-text-content" data-text-html="Relasi rekurensi adalah persamaan yang mendefinisikan sebuah barisan secara rekursif. Setiap suku dari barisan didefinisikan sebagai fungsi dari suku-suku sebelumnya. Pikirkan seperti efek domino: domino ke-n jatuh karena domino ke-(n-1) mendorongnya. Itulah inti dari rekurensi!"></div>
+        </div>
+    </div>
+    <div class="modal" id="modal-jenis">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Jenis-Jenis Relasi</h2>
+            <div class="modal-text-content" data-text-html="&lt;p&gt;&lt;strong&gt;Linear Homogen:&lt;/strong&gt; Bentuknya `a(n) = c1*a(n-1) + c2*a(n-2) + ...`. Sisi kanannya nol jika semua suku dipindahkan ke kiri. Contohnya barisan Fibonacci.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Linear Non-Homogen:&lt;/strong&gt; Mirip seperti homogen, tapi ada fungsi tambahan `f(n)` di sisi kanan yang bukan nol. Contoh: `a(n) = 2*a(n-1) + 1`.&lt;/p&gt;"></div>
+        </div>
+    </div>
+    <div class="modal" id="modal-metode">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Metode Penyelesaian</h2>
+            <div class="modal-text-content" data-text-html="&lt;p&gt;Ada beberapa cara untuk menemukan &quot;bentuk tertutup&quot; (closed-form) dari relasi rekurensi:&lt;/p&gt;&lt;p&gt;&lt;strong&gt;1. Metode Substitusi (Iterasi):&lt;/strong&gt; Mengganti suku secara berulang hingga menemukan pola umum.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;2. Metode Akar Karakteristik:&lt;/strong&gt; Untuk relasi linear homogen, dengan mengubah relasi menjadi persamaan polinomial.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;3. Master Theorem:&lt;/strong&gt; Jurus pamungkas untuk menganalisis kompleksitas waktu dari algoritma rekursif (divide and conquer).&lt;/p&gt;"></div>
+        </div>
+    </div>
+    <div id="overlay"></div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+/* Import font dari Google - Tambah Crimson Text */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Dancing+Script:wght@400;700&family=Pacifico&family=Crimson+Text:wght@400;700&display=swap');
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Biar scroll-nya smooth waktu klik navigasi */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden; /* Mencegah scroll horizontal */
+}
+
+/* Latar Belakang Rumus */
+.math-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 0.2;
+    pointer-events: none;
+    background-image: url('data:image/svg+xml;utf8,<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><text x="10" y="30" font-family="Dancing Script" font-size="20" fill="%23FFC0CB">a(n)=r*a(n-1)+k</text><text x="120" y="80" font-family="Dancing Script" font-size="24" fill="%23FFC0CB">F(n)=F(n-1)+F(n-2)</text><text x="30" y="140" font-family="Dancing Script" font-size="18" fill="%23FFC0CB">r²-cr-d=0</text><text x="150" y="180" font-family="Dancing Script" font-size="16" fill="%23FFC0CB">n!</text></svg>');
+    background-size: 200px 200px;
+    animation: scrollBg 60s linear infinite;
+}
+
+@keyframes scrollBg {
+    from { background-position: 0 0; }
+    to { background-position: 2000px 2000px; }
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: #ffffff;
+}
+
+/* Styling Header & Navigasi */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+header.scrolled {
+    background-color: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    height: 70px;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #FF69B4, #EE82EE);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a.active {
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 105, 180, 0.8);
+}
+
+/* Styling Hero Section */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero-section h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 4.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(90deg, #FF69B4, #EE82EE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* Styling Section Materi */
+.materi-section { padding: 100px 0; min-height: 100vh; display: flex; align-items: center; }
+.materi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+.materi-card { height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; backdrop-filter: blur(5px); padding: 20px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.materi-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); }
+.materi-card .icon { font-size: 4rem; margin-bottom: 1rem; }
+.materi-card h3 { font-size: 1.5rem; color: #ffffff; text-align: center; }
+
+/* Styling Modal */
+.modal { display: none; position: fixed; z-index: 200; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 600px; background-color: #2a2a2a; border-radius: 15px; padding: 2rem; box-shadow: 0 5px 25px rgba(0,0,0,0.7); }
+.modal-content h2 { margin-bottom: 1rem; color: #FF69B4; }
+.modal-content p { margin-bottom: 0.5rem; }
+.close-button { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+#overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 150; }
+.modal.active, #overlay.active { display: block; }
+
+/* Font untuk Konten Modal & Efek Ketikan */
+.modal-text-content {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #f0f0f0;
+    white-space: pre-wrap;
+    overflow: hidden;
+    border-right: .15em solid transparent;
+}
+.modal.active .modal-text-content {
+    border-right: .15em solid #FF69B4;
+    animation: blink-caret-modal .75s step-end infinite;
+}
+@keyframes blink-caret-modal {
+    from, to { border-color: transparent; }
+    50% { border-color: #FF69B4; }
+}
+.modal-text-content strong {
+    color: #EE82EE;
+    font-weight: 700;
+}
+
+/* Styling Kalkulator */
+.kalkulator-section { padding: 100px 0; background-color: #1a1a1a; }
+.calculator-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2rem; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 15px; padding: 2rem; }
+@media (max-width: 900px) { .calculator-wrapper { grid-template-columns: 1fr; } }
+.calculator-input h3, .calculator-output h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #ffffff; }
+.tabs { display: flex; margin-bottom: 1.5rem; background-color: rgba(0,0,0,0.2); border-radius: 8px; }
+.tab-btn { flex: 1; padding: 1rem; background: none; border: none; color: #a0a0a0; font-size: 1rem; font-weight: bold; cursor: pointer; transition: all 0.3s ease; }
+.tab-btn.active { color: #ffffff; background-color: #FF69B4; border-radius: 8px; }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-content h4 { color: #c0c0c0; margin-bottom: 1rem; font-weight: normal; }
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; color: #c0c0c0; }
+input[type="number"] { width: 100%; padding: 12px; background-color: rgba(0, 0, 0, 0.3); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 8px; color: #e0e0e0; font-size: 1rem; font-family: 'Poppins', sans-serif; }
+.equation-template { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; margin-bottom: 1rem; }
+.equation-template input { width: 80px; text-align: center; }
+#solve-btn { width: 100%; padding: 15px; font-size: 1.2rem; font-weight: bold; color: #ffffff; background: linear-gradient(90deg, #FF69B4, #EE82EE); border: none; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; margin-top: 1rem; }
+#solve-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 20px rgba(255, 105, 180, 0.6); }
+.calculator-output { background-color: rgba(0, 0, 0, 0.2); border-radius: 8px; padding: 1.5rem; }
+#solution-steps { height: 400px; overflow-y: auto; font-family: 'Courier New', Courier, monospace; color: #c0c0c0; }
+#solution-steps .placeholder { height: 100%; display: flex; justify-content: center; align-items: center; text-align: center; color: #777; font-family: 'Poppins', sans-serif; }
+#solution-steps ul { list-style-position: inside; }
+#solution-steps hr { border-color: rgba(255,255,255,0.1); margin: 1rem 0; }
+#solution-steps h4 { background: linear-gradient(90deg, #FF69B4, #EE82EE); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+/* Styling Arena Kuis */
+.lab-section { 
+    padding: 100px 0; 
+}
+
+.quiz-container { 
+    background: rgba(255, 255, 255, 0.02); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    border-radius: 15px; 
+    padding: 2rem; 
+}
+
+.question-block { 
+    margin-bottom: 2rem; 
+}
+
+.question-block p { 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    margin-bottom: 1rem; 
+}
+
+.options { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 0.5rem; 
+}
+
+.options label { 
+    background: rgba(255, 255, 255, 0.05); 
+    padding: 1rem; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+
+.options label:hover { 
+    background: rgba(255, 255, 255, 0.1); 
+}
+
+.options input { 
+    margin-right: 10px; 
+}
+
+.quiz-buttons { 
+    display: flex; 
+    gap: 1rem; 
+    margin-top: 1rem; 
+}
+
+#check-quiz-btn, #retry-quiz-btn { 
+    flex: 1; 
+    padding: 15px; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    color: #ffffff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    transition: all 0.3s ease; 
+}
+
+#check-quiz-btn { 
+    background: linear-gradient(90deg, #FF69B4, #EE82EE);
+}
+
+#check-quiz-btn:hover { 
+    background: linear-gradient(90deg, #EE82EE, #FF69B4);
+}
+
+#retry-quiz-btn { 
+    background: #555; 
+    display: none; 
+}
+
+#retry-quiz-btn:hover { 
+    background: #777; 
+}
+
+.quiz-result { 
+    text-align: center; 
+    font-size: 2rem; 
+    margin-top: 2rem; 
+}
+
+.quiz-solutions { 
+    margin-top: 2rem; 
+}
+
+.solution-item {
+    background: rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    border-left: 3px solid #FF69B4;
+}
+
+.solution-item h4 {
+    font-family: 'Poppins', sans-serif;
+    color: #FFC0CB;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+}
+
+.solution-item p {
+    font-family: 'Crimson Text', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #d0d0d0;
+}
+
+.solution-item .user-answer.correct {
+    color: #77dd77;
+    font-weight: bold;
+}
+
+.solution-item .user-answer.wrong {
+    color: #ff6961;
+    text-decoration: line-through;
+    font-weight: bold;
+}
